@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 202011191500
+      author: lexa
+      changes:
+        - createTable:
+            tableName: question
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: content
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pull_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_question
+                    referencedTableName: pull
+                    referencedColumnNames: id
+
